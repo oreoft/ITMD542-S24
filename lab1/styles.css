@@ -51,9 +51,14 @@ ul {
     text-align: center;
     text-decoration: none;
     color: white;
-    background-color: blue;
+    background-color: rgb(166, 168, 165);
     border-radius: 5px;
     font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    background-color: rgba(68, 66, 66, 0.13);
 }
 
 li a {
