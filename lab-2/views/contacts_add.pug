@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  p Use the form below to add a Contact.
+  hr
+  if msgs
+    each msg in msgs
+      p(class='redtext')= msg
+  form(method='POST' action='/contacts/add')
+    input(type='text' placeholder='input contact firstName' name='firstName' size=40)
+    br
+    br
+    input(type='text' placeholder='input contact lastName' name='lastName' size=40)
+    br
+    br
+    input(type='text' placeholder='input contact emailAddress(Optional)' name='emailAddress' size=40)
+    br
+    br
+    input(type='text' placeholder='input contact notes(Optional)' name='notes' size=40)
+    br
+    br
+    button(type='submit') Create Contact
+    br
+    br
+    a(href='/contacts') Cancel

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+
+  p= 'firstName: ' + contact.firstName
+  p= 'lastName: ' + contact.lastName
+  p= 'emailAddress: ' + contact.emailAddress
+  p= 'notes: ' + contact.notes
+  p= 'lastEdited: ' + contact.lastEdited
+  div.todo-actions
+    a(href=`/contacts/${contact.id}/delete`) Delete Contact
+    br
+    br
+    a(href=`/contacts/${contact.id}/edit`) Edit Contact
+    br
+    br
+    a(href=`/contacts`) Return Home
