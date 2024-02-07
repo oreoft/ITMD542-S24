@@ -7,7 +7,7 @@ Welcome to the ITMD542-S24 project! This project is an assignment project for my
 This project aims to showcase my course assignments and academic progress.
 You can click on the links below and then view the information on each lab's published page.
 
-## Lab1 - [Link](lab-1/index.html)
+## Lab1 - [Link](lab-1)
 
 Lab1 is our course's first task, and it includes the following:
 
@@ -16,9 +16,9 @@ Lab1 is our course's first task, and it includes the following:
   a CSS file and add CSS to this page. You can do whatever you want as a design but make it look the best you can.
 - Commit your files to your repository and GitHub often. I expect to see more than one commit for this work.
 
-Please visit the Lab1 [Link](lab-1/index.html) to see more details.
+Please visit the Lab1 [Link](lab-1) to see more details.
 
-## Lab2 - [Link](lab-2/index.html)
+## Lab2 - [Link](lab-2)
 
 Lab2 tasks students with building a Node JS Express app for a non-persistent contact database, focusing on CRUD
 operations. Key elements include:
@@ -28,7 +28,7 @@ Pug, and CRUD functionalities without an actual database—instead, using a JSON
 -  Contacts include ID, name, email (optional), notes (optional), and timestamps. The app requires form
 validation, sanitization, RESTful URL patterns, and POST for data changes.
 
-Please visit the Lab1 [Link](lab-2/index.html) to see more details.
+Please visit the Lab2 [Link](lab-2) to see more details.
 
 ## Contact Information
 
