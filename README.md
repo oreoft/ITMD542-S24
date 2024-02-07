@@ -18,6 +18,18 @@ Lab1 is our course's first task, and it includes the following:
 
 Please visit the Lab1 [Link](lab-1/index.html) to see more details.
 
+## Lab2 - [Link](lab-2/index.html)
+
+Lab2 tasks students with building a Node JS Express app for a non-persistent contact database, focusing on CRUD
+operations. Key elements include:
+
+-  Express-generator for setup, Git for versioning without node_modules, optional template engine preference for
+Pug, and CRUD functionalities without an actual database—instead, using a JSON file for data handling.
+-  Contacts include ID, name, email (optional), notes (optional), and timestamps. The app requires form
+validation, sanitization, RESTful URL patterns, and POST for data changes.
+
+Please visit the Lab1 [Link](lab-2/index.html) to see more details.
+
 ## Contact Information
 
 If you have any questions or suggestions, you can reach out to me through the following means:
