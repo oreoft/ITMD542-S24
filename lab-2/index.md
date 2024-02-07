@@ -51,7 +51,7 @@ If you wish to compile the boot locally, you need to follow these steps
 3. In the lab-2 folder, run `npm install` to install the required dependencies.
 ![image-20240207101608374](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071016397.png)
 
-4. This step is optional, this project uses tailwind for css assist, if you don't have any changes, you can ignore this step, already I've typed all the compiled css into the project, if you have changes in your code, you should also run ` npm run build-css ` before launching.
+4. This step is optional, this project uses tailwind for css assist, if you don't have any changes, you can ignore this step, already I've typed all the compiled css into the project, if you have changes in your code, you should also run `npm run build-css` before launching.
 ![image-20240207103422770](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071052461.png)
 
 5. Finally, start the project directly using `npm start`.
