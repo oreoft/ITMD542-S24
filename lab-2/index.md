@@ -6,7 +6,7 @@ Lab2: building a Node JS Express app for a non-persistent contact database, focu
 
 You can access the experience online by **clicking [here](http://itmd542-lab2-yifan.someget.work/)**
 
-## background
+## Feature
 
 This is a simple contact list application without login authentication. Its main features include
 
@@ -30,11 +30,11 @@ The information that can be entered includes
 
 ## How-to-use
 
-#### online use
+#### Online-use
 
 First I've deployed to the server，You can access the experience online by **clicking [here](http://itmd542-lab2-yifan.someget.work/)**
 
-#### Local compilation use
+#### Local-compilation-use
 
 If you wish to compile the boot locally, you need to follow these steps
 
@@ -46,13 +46,13 @@ If you wish to compile the boot locally, you need to follow these steps
    git clone https://github.com/oreoft/ITMD542-S24.git
    cd ITMD542-S24/lab-2
    ```
-![image-20240207101509373](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071015412.png)
+   ![image-20240207101509373](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071015412.png)
    
 3. In the lab-2 folder, run `npm install` to install the required dependencies.
 ![image-20240207101608374](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071016397.png)
 
 4. This step is optional, this project uses tailwind for css assist, if you don't have any changes, you can ignore this step, already I've typed all the compiled css into the project, if you have changes in your code, you should also run ` npm run build-css ` before launching.
-![image-20240207103422770](/Users/oreoft/Library/Application Support/typora-user-images/image-20240207103422770.png)
+![image-20240207103422770](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071052461.png)
 
 5. Finally, start the project directly using `npm start`.
 ![image-20240207101707273](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071017297.png)
@@ -60,7 +60,7 @@ If you wish to compile the boot locally, you need to follow these steps
 5. The default port is 3000, enter `localhost:3000` in the browser to access the homepage
 ![image-20240207101802354](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071018377.png)
 
-## some-demo-screenshots
+## Some-demo-screenshots
 - Home page
 
 ![image-20240207095548211](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402070955254.png)
