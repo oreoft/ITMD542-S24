@@ -1,18 +1,18 @@
 extends layout
 
 block content
-  h1= title
+  div(class="flex items-center justify-center min-h-screen bg-gray-100")
+    div(class="w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6")
+      h1(class="text-2xl font-semibold text-center text-gray-800 mb-6")= title
 
-  p= 'firstName: ' + contact.firstName
-  p= 'lastName: ' + contact.lastName
-  p= 'emailAddress: ' + contact.emailAddress
-  p= 'notes: ' + contact.notes
-  p= 'lastEdited: ' + contact.lastEdited
-  div.contact-actions
-    a(href=`/contacts/${contact.id}/delete`) Delete Contact
-    br
-    br
-    a(href=`/contacts/${contact.id}/edit`) Edit Contact
-    br
-    br
-    a(href=`/contacts`) Return Home
+      div(class="mb-6 text text-gray-600")
+        p firstName: #{contact.firstName}
+        p lastName: #{contact.lastName}
+        p emailAddress: #{contact.emailAddress}
+        p notes: #{contact.notes}
+        p lastEdited: #{contact.lastEdited}
+
+      div(class="flex flex-col sm:flex-row justify-center gap-4 mt-6")
+        a(href=`/contacts/${contact.id}/delete` class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center") Delete Contact
+        a(href=`/contacts/${contact.id}/edit` class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center") Edit Contact
+        a(href=`/contacts` class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center") Return Home

@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Are you sure you want to delete the following Contact?
-  hr
-  form(method='POST' action=`/contacts/${contact.id}/delete`)
-    button(type='submit') Confirm Delete
-    br
-    br
-    a(href=`/contacts/${contact.id}`) Cancel
+  div(class="flex items-center justify-center min-h-screen bg-gray-100")
+    div(class="w-full max-w-md bg-white rounded-lg shadow-lg p-6")
+      h1(class="text-2xl font-semibold text-center text-gray-800 mb-4")= title
+      p(class="text-center text-gray-600 mb-6") Are you sure you want to delete the following Contact?
+      hr(class="mb-6")
+      form(method="POST" action=`/contacts/${contact.id}/delete` class="flex flex-col items-center space-y-4")
+        button(type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Confirm Delete
+        a(href=`/contacts/${contact.id}` class="mt-4 text-blue-500 hover:text-blue-600") Cancel
