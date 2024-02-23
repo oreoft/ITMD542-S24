@@ -7,8 +7,16 @@ var logger = require('morgan');
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 var contactsRouter = require('./routes/contacts');
+const {setupDatabase} = require("./src/database");
 
 var app = express();
+
+try {
+    setupDatabase();
+    console.log('Database setup completed.');
+} catch (error) {
+    console.error('Failed to setup database or start server:', error);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

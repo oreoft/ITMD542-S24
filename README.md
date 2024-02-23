@@ -23,12 +23,22 @@ Please visit the Lab1 [Link](lab-1) to see more details.
 Lab2 tasks students with building a Node JS Express app for a non-persistent contact database, focusing on CRUD
 operations. Key elements include:
 
--  Express-generator for setup, Git for versioning without node_modules, optional template engine preference for
-Pug, and CRUD functionalities without an actual database—instead, using a JSON file for data handling.
--  Contacts include ID, name, email (optional), notes (optional), and timestamps. The app requires form
-validation, sanitization, RESTful URL patterns, and POST for data changes.
+- Express-generator for setup, Git for versioning without node_modules, optional template engine preference for
+  Pug, and CRUD functionalities without an actual database—instead, using a JSON file for data handling.
+- Contacts include ID, name, email (optional), notes (optional), and timestamps. The app requires form
+  validation, sanitization, RESTful URL patterns, and POST for data changes.
 
 Please visit the Lab2 [Link](lab-2) to see more details.
+
+## Lab3 - [Link](lab-3)
+
+Lab3 Convert Lab 2 Node.js Express App to SQLite
+
+- Use any Node SQLite module for database interactions.
+- Data file must be stored in the project's data folder.
+- Ensure the app functions by cloning the repository to a new location and testing.
+
+Please visit the Lab2 [Link](lab-3) to see more details.
 
 ## Contact Information
 
