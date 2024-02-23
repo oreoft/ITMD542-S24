@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const contactsRepo = require('../src/contactsFileRepository');
+const contactsRepo = require('../src/contactsSqliteRepository');
 
 router.get('/', function (req, res, next) {
-    const data = contactsRepo.findAll();
-    res.render('contacts', {title: "YiFan's Contacts APP", contacts: data});
+    contactsRepo.findAll()
+        .then(data => res.render('contacts', {title: "YiFan's Contacts APP(Sqlite Edition)", contacts: data}))
 });
 
 router.get('/add', function (req, res, next) {
@@ -32,18 +32,19 @@ function checkFieldIsEmpty(field, fieldName) {
 
 /* GET a contact */
 router.get('/:uuid', function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
-    if (contact) {
-        res.render('contact', {title: 'Your Contact', contact: contact});
-    } else {
-        res.redirect('/contacts');
-    }
-
+    contactsRepo.findById(req.params.uuid)
+        .then(contact => {
+            if (contact) {
+                res.render('contact', {title: 'Your Contact', contact: contact});
+            } else {
+                res.redirect('/contacts');
+            }
+        })
 });
 
 router.get('/:uuid/delete', function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
-    res.render('contacts_delete', {title: 'Delete Contact', contact: contact});
+    contactsRepo.findById(req.params.uuid)
+        .then(contact => res.render('contacts_delete', {title: 'Delete Contact', contact: contact}))
 });
 
 router.post('/:uuid/delete', function (req, res, next) {
@@ -52,8 +53,8 @@ router.post('/:uuid/delete', function (req, res, next) {
 });
 
 router.get('/:uuid/edit', function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
-    res.render('contacts_edit', {title: 'Edit Contact', contact: contact});
+    contactsRepo.findById(req.params.uuid)
+        .then(contact => res.render('contacts_edit', {title: 'Edit Contact', contact: contact}));
 });
 
 router.post('/:uuid/edit', function (req, res, next) {
@@ -62,8 +63,8 @@ router.post('/:uuid/edit', function (req, res, next) {
     msgs.push(checkFieldIsEmpty(req.body.lastName, "lastName"))
     msgs = msgs.filter(e => e)
     if (msgs.length > 0) {
-        const contact = contactsRepo.findById(req.params.uuid);
-        res.render('contacts_edit', {title: 'Edit Contact', msgs: msgs, contact: contact});
+        const contact = contactsRepo.findById(req.params.uuid)
+            .then(contact => res.render('contacts_edit', {title: 'Edit Contact', msgs: msgs, contact: contact}));
     } else {
         req.body.id = req.params.uuid
         req.body.lastEdited = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
