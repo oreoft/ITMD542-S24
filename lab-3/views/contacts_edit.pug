@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div(class="flex items-center justify-center min-h-screen bg-gray-100")
+    div(class="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6")
+      h1(class="text-2xl font-semibold text-center text-gray-800 mb-6")= title
+      p(class="text-center text-gray-600 mb-6") Use the form below to edit this contact.
+      hr(class="mb-6")
+      if msgs
+        div(class="space-y-2 mb-6")
+          each msg in msgs
+            p(class="text-red-500 text-center")= msg
+      form(method="POST" action=`/contacts/${contact.id}/edit` class="space-y-6")
+        div(class="flex flex-col items-center space-y-6")
+          input(type="text" value=contact.firstName placeholder="input contact firstName" name="firstName" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md")
+          input(type="text" value=contact.lastName placeholder="input contact lastName" name="lastName" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md")
+          input(type="text" value=contact.emailAddress placeholder="input contact emailAddress(Optional)" name="emailAddress" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md")
+          input(type="text" value=contact.notes placeholder="input contact notes(Optional)" name="notes" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md")
+        div(class="flex justify-center space-x-6 mt-8")
+          button(type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Save Changes
+          a(href="/contacts" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Cancel
