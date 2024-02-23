@@ -1,8 +1,8 @@
-# ITMD-542-Lab2-Yifan's Contacts
+# ITMD-542-Lab3-Yifan's Contacts
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-Lab2: building a Node JS Express app for a non-persistent contact database, focusing on CRUD
+Lab3: building a Node JS Express app for a non-persistent contact database, focusing on CRUD
 
 You can access the experience online by **clicking [here](http://itmd542-lab2-yifan.someget.work/)**
 
