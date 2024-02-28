@@ -5,7 +5,10 @@ Welcome to the ITMD542-S24 project! This project is an assignment project for my
 ## Project Overview
 
 This project aims to showcase my course assignments and academic progress.
+
 You can click on the links below and then view the information on each lab's published page.
+
+**You can access the online version by clicking [here](https://oreoft.github.io/ITMD542-S24/)** 
 
 ## Lab1 - [Link](lab-1)
 
