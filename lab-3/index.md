@@ -4,7 +4,7 @@
 
 Lab3: building a Node JS Express app for a non-persistent contact database, focusing on CRUD
 
-You can access the experience online by **clicking [here](http://itmd542-lab2-yifan.someget.work/)**
+You can access the experience online by **clicking [here](http://itmd542-lab3-yifan.someget.work/)**
 
 ## Feature
 
@@ -44,7 +44,7 @@ If you wish to compile the boot locally, you need to follow these steps
 
    ```shell
    git clone https://github.com/oreoft/ITMD542-S24.git
-   cd ITMD542-S24/lab-2
+   cd ITMD542-S24/lab-3
    ```
    ![image-20240207101509373](https://mypicgogo.oss-cn-hangzhou.aliyuncs.com/tuchuang202402071015412.png)
    
