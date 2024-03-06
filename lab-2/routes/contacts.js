@@ -4,7 +4,7 @@ const contactsRepo = require('../src/contactsFileRepository');
 
 router.get('/', function (req, res, next) {
     const data = contactsRepo.findAll();
-    res.render('contacts', {title: "YiFan's Contacts APP(Sqlite Edition)", contacts: data});
+    res.render('contacts', {title: "YiFan's Contacts APP(File Edition)", contacts: data});
 });
 
 router.get('/add', function (req, res, next) {
