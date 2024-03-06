@@ -32,7 +32,7 @@ const initData = () => {
 
 const saveData = () => {
     const stringifyData = JSON.stringify(Array.from(db));
-    if (db.size > 1) {
+    if (db.size > 100) {
         throw new Error("Sorry, the limit has been reached and no more contacts can be added.");
     }
     fs.writeFileSync(path.join(__dirname, '../data/contacts.json'), stringifyData);
