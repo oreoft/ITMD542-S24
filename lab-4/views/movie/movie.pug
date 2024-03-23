@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+    style.
+        .text-wrap {
+            word-wrap: break-word;
+            word-break: break-word; /* 确保在需要时单词也可以被拆分换行 */
+            white-space: pre-wrap; /* 保持空格和换行，同时允许文本自动换行 */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+    div(class="flex items-center justify-center min-h-screen bg-gray-100")
+        div(class="w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6")
+            h1(class="text-2xl font-semibold text-center text-gray-800 mb-6")= title
+
+            table
+                thead
+                    tr
+                        th Title
+                        th Director
+                        th Year
+                        th Notes
+                tbody
+                    tr
+                        td= movie.title
+                        td= movie.director
+                        td= movie.year
+                        td(class="text-wrap") Notes: #{movie.notes ? movie.notes : 'N/A'}
+
+            div(class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6")
+                a(href=`/movies/${movie.id}/delete` class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center") Delete Movie
+                a(href=`/movies/${movie.id}/edit` class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center") Edit Movie
+                a(href=`/movies` class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center") Return Home
+

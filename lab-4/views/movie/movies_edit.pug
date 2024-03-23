@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  div(class="flex items-center justify-center min-h-screen bg-gray-100")
+    div(class="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6")
+      h1(class="text-2xl font-semibold text-center text-gray-800 mb-6")= title
+      p(class="text-center text-gray-600 mb-6") Use the form below to edit this movie.
+      hr(class="mb-6")
+      if msgs
+        div(class="space-y-2 mb-6")
+          each msg in msgs
+            p(class="text-red-500 text-center")= msg
+      form(method="POST" action=`/movies/${movie.id}/edit` class="space-y-6")
+        div(class="flex flex-col items-center space-y-6")
+          input(type="text" value=movie.title placeholder="Movie Title" name="title" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md")
+          input(type="text" value=movie.director placeholder="Director Name" name="director" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md")
+          input(type="text" value=movie.year placeholder="Release Year" name="year" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md")
+          textarea(placeholder="Notes (Optional)" name="notes" class="input border border-gray-300 p-2 rounded-lg w-full max-w-md" rows="4")= movie.notes
+        div(class="flex justify-center space-x-6 mt-8")
+          button(type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Save Changes
+          a(href="/movies" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Cancel
+
