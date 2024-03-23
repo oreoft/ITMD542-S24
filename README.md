@@ -8,7 +8,7 @@ This project aims to showcase my course assignments and academic progress.
 
 You can click on the links below and then view the information on each lab's published page.
 
-**You can access the online version by clicking [here](https://oreoft.github.io/ITMD542-S24/)** 
+**You can access the online version by clicking [here](https://oreoft.github.io/ITMD542-S24/)**
 
 ## Lab1 - [Link](lab-1)
 
@@ -41,7 +41,17 @@ Lab3 Convert Lab 2 Node.js Express App to SQLite
 - Data file must be stored in the project's data folder.
 - Ensure the app functions by cloning the repository to a new location and testing.
 
-Please visit the Lab2 [Link](lab-3) to see more details.
+Please visit the Lab3 [Link](lab-3) to see more details.
+
+## Lab4 - [Link](lab-4)
+
+Lab 4: Node.js Express Movie Database with MongoDB Atlas
+
+Develop a Node.js Express app for CRUD operations on a movie database using MongoDB Atlas.
+Include RESTful routing, Pug templating, CSS styling, and dotenv for credential protection.
+Submit with incremental git commits, a detailed README, and adhere to the due date and submission guidelines.
+
+Please visit the Lab4 [Link](lab-4) to see more details.
 
 ## Contact Information
 
