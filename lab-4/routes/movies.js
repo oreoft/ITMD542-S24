@@ -1,75 +1,83 @@
 var express = require('express');
 var router = express.Router();
-const contactsRepo = require('../src/contactsSqliteRepository');
+const moviesRepo = require('../src/moviesMongoRepository'); // Adjust the path as necessary
 
+// Display all movies
 router.get('/', function (req, res, next) {
-    contactsRepo.findAll()
-        .then(data => res.render('contacts', {title: "YiFan's Contacts APP(Sqlite Edition)", contacts: data}))
+    moviesRepo.findAll()
+        .then(data => res.render('movie/movies', {title: "YiFan's Movie Collection", movies: data}))
 });
 
+// Display form to add a new movie
 router.get('/add', function (req, res, next) {
-    res.render('contacts_add', {title: 'Add a Contact'});
+    res.render('movie/movies_add', {title: 'Add a Movie'});
 });
 
+// Handle adding a new movie
 router.post('/add', function (req, res, next) {
     let msgs = []
-    msgs.push(checkFieldIsEmpty(req.body.firstName, "firstName"))
-    msgs.push(checkFieldIsEmpty(req.body.lastName, "lastName"))
+    msgs.push(checkFieldIsEmpty(req.body.title, "Title"))
+    msgs.push(checkFieldIsEmpty(req.body.director, "Director"))
+    msgs.push(checkFieldIsEmpty(req.body.year, "Year"))
     msgs = msgs.filter(e => e)
     if (msgs.length > 0) {
-        res.render('contacts_add', {title: 'Add a Contact', msgs: msgs});
+        res.render('movie/movies_add', {title: 'Add a Movie', msgs: msgs});
     } else {
-        contactsRepo.create(req.body);
-        res.redirect('/contacts');
+        moviesRepo.create(req.body);
+        res.redirect('/movies');
     }
 });
 
 function checkFieldIsEmpty(field, fieldName) {
     if (field.trim() === '') {
-        return `Contact ${fieldName} can not be empty!`
+        return `${fieldName} cannot be empty!`
     }
 }
 
-/* GET a contact */
+// Display a single movie
 router.get('/:uuid', function (req, res, next) {
-    contactsRepo.findById(req.params.uuid)
-        .then(contact => {
-            if (contact) {
-                res.render('contact', {title: 'Your Contact', contact: contact});
+    moviesRepo.findById(req.params.uuid)
+        .then(movie => {
+            if (movie) {
+                res.render('movie/movie', {title: 'Movie Details', movie: movie});
             } else {
-                res.redirect('/contacts');
+                res.redirect('/movies');
             }
         })
 });
 
+// Display form to confirm deletion of a movie
 router.get('/:uuid/delete', function (req, res, next) {
-    contactsRepo.findById(req.params.uuid)
-        .then(contact => res.render('contacts_delete', {title: 'Delete Contact', contact: contact}))
+    moviesRepo.findById(req.params.uuid)
+        .then(movie => res.render('movie/movies_delete', {title: 'Delete Movie', movie: movie}))
 });
 
+// Handle movie deletion
 router.post('/:uuid/delete', function (req, res, next) {
-    contactsRepo.deleteById(req.params.uuid);
-    res.redirect('/contacts');
+    moviesRepo.deleteById(req.params.uuid);
+    res.redirect('/movies');
 });
 
+// Display form to edit a movie
 router.get('/:uuid/edit', function (req, res, next) {
-    contactsRepo.findById(req.params.uuid)
-        .then(contact => res.render('contacts_edit', {title: 'Edit Contact', contact: contact}));
+    moviesRepo.findById(req.params.uuid)
+        .then(movie => res.render('movie/movies_edit', {title: 'Edit Movie', movie: movie}));
 });
 
+// Handle editing a movie
 router.post('/:uuid/edit', function (req, res, next) {
     let msgs = []
-    msgs.push(checkFieldIsEmpty(req.body.firstName, "firstName"))
-    msgs.push(checkFieldIsEmpty(req.body.lastName, "lastName"))
+    msgs.push(checkFieldIsEmpty(req.body.title, "Title"))
+    msgs.push(checkFieldIsEmpty(req.body.director, "Director"))
+    msgs.push(checkFieldIsEmpty(req.body.year, "Year"))
     msgs = msgs.filter(e => e)
     if (msgs.length > 0) {
-        const contact = contactsRepo.findById(req.params.uuid)
-            .then(contact => res.render('contacts_edit', {title: 'Edit Contact', msgs: msgs, contact: contact}));
+        moviesRepo.findById(req.params.uuid)
+            .then(movie => res.render('movie/movies_edit', {title: 'Edit Movie', msgs: msgs, movie: movie}));
     } else {
         req.body.id = req.params.uuid
-        req.body.lastEdited = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
-        contactsRepo.update(req.body);
-        res.redirect('/contacts');
+        moviesRepo.update(req.body);
+        res.redirect('/movies');
     }
 });
 
