@@ -1,5 +1,9 @@
 # Project Name: Lab-4
 
+## Online-Visit
+
+First I've deployed to the server，You can access the experience online by **clicking [here](http://itmd542-lab3-yifan.someget.work/)**
+
 ## Project Description
 
 This project is a web application developed using Express and Node.js. It showcases a simple yet functional interface
