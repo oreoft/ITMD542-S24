@@ -2,8 +2,7 @@
 
 ## Online-Visit
 
-First I've deployed to the server，You can access the experience online by *
-*clicking [here](http://itmd542-fp-yifan.someget.work/)**
+First I've deployed to the server，You can access the experience online by clicking [here](http://itmd542-fp-yifan.someget.work/)
 
 ## Project Description
 
@@ -105,11 +104,11 @@ create table daily_check
 
 ![img_1.png](imgs/img_1.png)
 
-## Q & A core flow chart
+## Waste Sorting core flow chart
 
 ![img_2.png](imgs/img_2.png)
 
-## Q & A Core Timing Chart
+## Waste Sorting Core Timing Chart
 
 ![img.png](imgs/img.png)
 
