@@ -14,6 +14,71 @@ router.get('/', function (req, res, next) {
     res.redirect('/');
 });
 
+
+router.post('/logout', async function (req, res, next) {
+    // 检查是否存在cookie
+    if (req.cookies) {
+        // 遍历所有cookie
+        for (const cookie in req.cookies) {
+            // 对每个cookie调用clearCookie来删除
+            res.clearCookie(cookie);
+        }
+    }
+    res.json({message: "Logout Success", code: 0});
+});
+
+router.post('/delete', async function (req, res, next) {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(400).json({message: "No token provided", code: 1});
+    }
+
+    try {
+        const userRepository = getRepository(User);
+        const user = await userRepository.findOne({where: {token: token}});
+        if (!user) {
+            return res.status(404).json({message: "User not found", code: 1});
+        }
+
+        await userRepository.remove(user);
+        if (req.cookies) {
+            // 遍历所有cookie
+            for (const cookie in req.cookies) {
+                // 对每个cookie调用clearCookie来删除
+                res.clearCookie(cookie);
+            }
+        }
+        res.json({message: "User deleted successfully", code: 0});
+    } catch (error) {
+        console.error("Error deleting user:", error);
+        res.status(500).json({message: "Internal Server Error", code: 1});
+    }
+});
+
+router.post('/edit-username', async function (req, res, next) {
+    const token = req.cookies.token;
+    const newUserName = req.body.username;
+
+    if (!token || !newUserName) {
+        return res.status(400).json({message: "Token and new user name are required", code: 1});
+    }
+
+    try {
+        const userRepository = getRepository(User);
+        const user = await userRepository.findOne({where: {token: token}});
+        if (!user) {
+            return res.status(404).json({message: "User not found", code: 1});
+        }
+
+        user.user_name = newUserName;
+        await userRepository.save(user);
+        res.json({message: "User name updated successfully", code: 0});
+    } catch (error) {
+        console.error("Error updating user name:", error);
+        res.status(500).json({message: "Internal Server Error", code: 1});
+    }
+});
+
 router.get('/callback', async function (req, res, next) {
     const code = req.query.code; // GitHub callbacks typically pass code as a query parameter
     try {
@@ -24,12 +89,12 @@ router.get('/callback', async function (req, res, next) {
         const userRepository = getRepository(User);
         const token = uuidv4().replace(/\-/g, '')
         // Find Users by ID
-        const user = await userRepository.findOne({uid: userInfo.id});
+        let user = await userRepository.findOne({uid: userInfo.id});
         if (user) {
             user.token = token
             await userRepository.save(user);
         } else {
-            const user = userRepository.create({
+            user = userRepository.create({
                 uid: userInfo.id,
                 user_name: userInfo.login || "Anonymous-visitors",
                 token: token,
@@ -41,7 +106,7 @@ router.get('/callback', async function (req, res, next) {
         res.redirect('/home');
     } catch (error) {
         console.error("Error fetching GitHub access token:", error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({message: "Internal Server Error", code: 1});
     }
 });
 
