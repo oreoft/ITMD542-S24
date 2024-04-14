@@ -47,19 +47,23 @@ Please visit the Lab3 [Link](lab-3) to see more details.
 
 Lab 4: Node.js Express Movie Database with MongoDB Atlas
 
-Develop a Node.js Express app for CRUD operations on a movie database using MongoDB Atlas.
-Include RESTful routing, Pug templating, CSS styling, and dotenv for credential protection.
-Submit with incremental git commits, a detailed README, and adhere to the due date and submission guidelines.
+- Develop a Node.js Express app for CRUD operations on a movie database using MongoDB Atlas.
+- Include RESTful routing, Pug templating, CSS styling, and dotenv for credential protection.
+- Submit with incremental git commits, a detailed README, and adhere to the due date and submission guidelines.
 
 Please visit the Lab4 [Link](lab-4) to see more details.
 
 ## Final Project - [Link](final-project)
 
-Develop a unique full stack CRUD application, integrating Node.js, Express, and MongoDB or SQLite. Focus on originality, avoiding common examples like contact or todo apps.
+Develop a unique full stack CRUD application, integrating Node.js, Express, and MongoDB or SQLite. Focus on originality,
+avoiding common examples like contact or todo apps.
 
-- **Implementation**: Use Node.js with Express for backend, HTML templates for frontend, and MongoDB Atlas or SQLite for the database. Ensure professional styling and secure credentials with dotenv.
-- **Features**: Include authentication (PassportJS), protected routes, at least two data models, and support for all CRUD operations.
-- **Submission**: Maintain a private GitHub repository with regular commits. Provide a README with setup and testing instructions. Submit before finals week.
+- Implementation: Use Node.js with Express for backend, HTML templates for frontend, and MongoDB Atlas or SQLite for the
+  database. Ensure professional styling and secure credentials with dotenv.
+- Features: Include authentication (PassportJS), protected routes, at least two data models, and support for all CRUD
+  operations.
+- Submission: Maintain a private GitHub repository with regular commits. Provide a README with setup and testing
+  instructions. Submit before finals week.
 
 For more details, visit the Final Project [Link](final-project).
 
