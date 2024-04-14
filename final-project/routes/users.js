@@ -102,8 +102,8 @@ router.get('/callback', async function (req, res, next) {
             });
             await userRepository.save(user);
         }
-        res.cookie('username', user.user_name, {httpOnly: true, secure: true});
-        res.cookie('token', user.token, {httpOnly: true, secure: true});
+        res.cookie('username', user.user_name, {httpOnly: true});
+        res.cookie('token', user.token, {httpOnly: true});
         res.redirect('/home');
     } catch (error) {
         console.error("Error fetching GitHub access token:", error);
