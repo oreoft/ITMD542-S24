@@ -37,7 +37,7 @@ router.post('/delete', async function (req, res, next) {
         const userRepository = getRepository(User);
         const user = await userRepository.findOne({where: {token: token}});
         if (!user) {
-            return res.status(404).json({message: "User not found", code: 1});
+            return res.status(400).json({message: "User not found", code: 1});
         }
 
         await userRepository.remove(user);
@@ -51,7 +51,7 @@ router.post('/delete', async function (req, res, next) {
         res.json({message: "User deleted successfully", code: 0});
     } catch (error) {
         console.error("Error deleting user:", error);
-        res.status(500).json({message: "Internal Server Error", code: 1});
+        res.status(400).json({message: "Internal Server Error", code: 1});
     }
 });
 
@@ -67,7 +67,7 @@ router.post('/edit-username', async function (req, res, next) {
         const userRepository = getRepository(User);
         const user = await userRepository.findOne({token: token});
         if (!user) {
-            return res.status(404).json({message: "User not found", code: 1});
+            return res.status(400).json({message: "User not found", code: 1});
         }
 
         user.user_name = newUserName;
@@ -76,7 +76,7 @@ router.post('/edit-username', async function (req, res, next) {
         res.json({message: "User name updated successfully", code: 0});
     } catch (error) {
         console.error("Error updating user name:", error);
-        res.status(500).json({message: "Internal Server Error", code: 1});
+        res.status(400).json({message: "Internal Server Error", code: 1});
     }
 });
 
@@ -107,7 +107,7 @@ router.get('/callback', async function (req, res, next) {
         res.redirect('/home');
     } catch (error) {
         console.error("Error fetching GitHub access token:", error);
-        res.status(500).json({message: "Internal Server Error", code: 1});
+        res.status(400).json({message: "Internal Server Error", code: 1});
     }
 });
 

@@ -76,7 +76,7 @@ router.get('/do', async function (req, res, next) {
         getRepository(QARecord).save(qaRecord);
         res.json({code: 0, data: result, message: "success"});
     } catch (error) {
-        res.status(500).json({code: 1, message: error.message});
+        res.status(400).json({code: 1, message: error.message});
     }
 });
 
@@ -113,7 +113,7 @@ router.post('/check-in', async (req, res) => {
         res.json({code: 0, message: 'Check-in successful'});
     } catch (error) {
         console.error('Check-in error:', error);
-        res.status(500).json({code: 1, message: 'Internal server error'});
+        res.status(400).json({code: 1, message: 'Internal server error'});
     }
 });
 
