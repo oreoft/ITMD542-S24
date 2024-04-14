@@ -22,6 +22,10 @@ module.exports = new EntitySchema({
             type: "varchar",
             length: 500
         },
+        date: {
+            type: "varchar",
+            length: 32
+        },
         mtime: {
             type: "text",
             default: () => "CURRENT_TIMESTAMP",
@@ -36,6 +40,10 @@ module.exports = new EntitySchema({
         {
             name: "qa_record_ix_mtime",
             columns: ["mtime"]
+        },
+        {
+            name: "qa_record_ix_uid_date",
+            columns: ["uid", "date"]
         },
         {
             name: "qa_record_ix_ctime",

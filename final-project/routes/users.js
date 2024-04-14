@@ -7,17 +7,11 @@ const {v4: uuidv4} = require('uuid');
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-const redirectUri = process.env.REDIRECT_URI;
-const scope = process.env.SCOPE;
 const userUrl = process.env.USER_URL;
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     res.redirect('/');
-});
-
-router.get('/login', function (req, res, next) {
-    res.redirect(`https://github.com/login/oauth/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=code`)
 });
 
 router.get('/callback', async function (req, res, next) {

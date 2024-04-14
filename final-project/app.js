@@ -8,8 +8,7 @@ const { createConnection } = require("typeorm");
 
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
-var contactsRouter = require('./routes/contacts');
-const {setupDatabase} = require("./src/database");
+var qaRouter = require('./routes/qa');
 
 var app = express();
 
@@ -28,8 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/qa', qaRouter);
 app.use('/users', usersRouter);
-app.use('/contacts', contactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
