@@ -68,9 +68,10 @@ block content
                 button#userMenuButton(class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") Menu
             // Drop-down menus fit snugly on Menu buttons
             div#userMenu(class="hidden absolute right-0 mt-1 bg-white rounded-md shadow-xl z-10")
-                a(href="/edit-username" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") edit-username
-                a(href="#" id="logout-link" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") logout
-                a(href="#" id="delete-account-link" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-100") delete account
+                a(href="#" id="check-in-link" class="block px-4 py-2 text-sm text-yellow-500 hover:bg-yellow-100") Check In
+                a(href="/edit-username" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") Edit Username
+                a(href="#" id="logout-link" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") Logout
+                a(href="#" id="delete-account-link" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-100") Delete Account
             // chat container
             .chat-container.flex.flex-col.space-y-4.p-3.h-96.w-82.overflow-y-auto.mt-4
                 div.flex.items-center
@@ -78,7 +79,7 @@ block content
                     .chat-message.robot.text-gray-800.text-left.p-2.rounded-lg.bg-gray-50.break-words.max-w-xs.ml-2 #{initContent}
             form.chat-form.mt-4.flex.relative
                 .input-wrapper.relative.flex-1
-                    input(type="text" placeholder="Type a message..." class="w-full border border-gray-300 py-2 px-4 rounded-lg focus:outline-none")
+                    input(type="text" placeholder="Type the garbage you want to classify..." class="w-full border border-gray-300 py-2 px-4 rounded-lg focus:outline-none")
                     .input-mask.hidden
                         .loading-spinner
                 button(type="submit" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg shadow transition duration-150 ease-in-out hover:shadow-lg") Send
@@ -268,6 +269,18 @@ block content
                             showToast('Failed to update username');
                         });
                 }
+            });
+            document.getElementById('check-in-link').addEventListener('click', function (e) {
+                e.preventDefault();
+                fetch('/qa/check-in', {
+                    method: 'POST',
+                    credentials: 'include'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        showToast(data.message)
+                    })
+                    .catch(error => console.error('Error:', error));
             });
         });
 

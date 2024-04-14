@@ -80,5 +80,42 @@ router.get('/do', async function (req, res, next) {
     }
 });
 
+router.post('/check-in', async (req, res) => {
+    try {
+        const token = req.cookies.token;
+        if (!token) {
+            res.json({code: 1, data: "", message: "Please login again first"});
+            return
+        }
+        const user = await getRepository(User).findOne({token: token});
+        if (!user) {
+            res.json({code: 1, data: "", message: "Please login again first"});
+            return
+        }
+        const uid = user.uid;
+        const today = new Date();
+        const checkDate = today.toISOString().slice(0, 10).replace(/-/g, '');
+
+        // 检查是否已经签到
+        const existingCheck = await getRepository(DailyCheck).findOne({uid: uid, check_date: checkDate});
+        if (existingCheck) {
+            return res.json({code: 1, message: 'Sorry, Already checked in today'});
+        }
+
+        // 创建新的签到记录
+        const newCheck = getRepository(DailyCheck).create({
+            uid: uid,
+            check_date: checkDate
+        });
+
+        await getRepository(DailyCheck).save(newCheck);
+
+        res.json({code: 0, message: 'Check-in successful'});
+    } catch (error) {
+        console.error('Check-in error:', error);
+        res.status(500).json({code: 1, message: 'Internal server error'});
+    }
+});
+
 
 module.exports = router;
