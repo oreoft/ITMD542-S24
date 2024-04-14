@@ -71,7 +71,7 @@ router.get('/do', async function (req, res, next) {
             throw new Error("Failed to get response from external API");
         }
 
-        const result = response.data.data; // 假设这是API返回的结果
+        const result = response.data.data || response.data.message;
         qaRecord = await getRepository(QARecord).create({uid: uid, question: content, answer: result, date: today});
         getRepository(QARecord).save(qaRecord);
         res.json({code: 0, data: result, message: "success"});

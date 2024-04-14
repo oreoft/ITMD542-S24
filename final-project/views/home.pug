@@ -76,7 +76,7 @@ block content
             .chat-container.flex.flex-col.space-y-4.p-3.h-96.w-82.overflow-y-auto.mt-4
                 div.flex.items-center
                     .avatar.bg-blue-500.text-white.font-bold.rounded-full.h-8.w-8.flex.items-center.justify-center.mr-2 AI
-                    .chat-message.robot.text-gray-800.text-left.p-2.rounded-lg.bg-gray-50.break-words.max-w-xs.ml-2 #{initContent}
+                    .chat-message.robot.text-gray-800.text-left.p-2.rounded-lg.bg-gray-50.break-words.max-w-md.ml-2 #{initContent}
             form.chat-form.mt-4.flex.relative
                 .input-wrapper.relative.flex-1
                     input(type="text" placeholder="Type the garbage you want to classify..." class="w-full border border-gray-300 py-2 px-4 rounded-lg focus:outline-none")
@@ -153,8 +153,8 @@ block content
                         aiResponseContainer.className = 'flex items-center mb-2';
                         // Show AI Answers
                         const aiResponseDiv = document.createElement('div');
-                        aiResponseDiv.textContent = result; // 使用接口返回的结果
-                        aiResponseDiv.className = 'chat-message robot text-gray-800 text-left p-2 rounded-lg bg-gray-50 break-words max-w-xs ml-2';
+                        aiResponseDiv.innerHTML = result.replace(/\n/g, '<br>');
+                        aiResponseDiv.className = 'chat-message robot text-gray-800 text-left p-2 rounded-lg bg-gray-50 break-words max-w-md ml-2';
                         // Creating AI avatar elements
                         const aiAvatarDiv = document.createElement('div');
                         aiAvatarDiv.className = 'avatar bg-blue-500 text-white font-bold rounded-full h-8 w-8 flex items-center justify-center mr-2';
