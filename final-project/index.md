@@ -2,14 +2,13 @@
 
 ## Online-Visit
 
-First I've deployed to the server，You can access the experience online by
-clicking [here](http://itmd542-fp-yifan.someget.work/)
+First I've deployed to the server，You can access the experience online by **clicking [here](http://itmd54x-fp-yifan.someget.work/)**
 
 ## Project Description
 
 In today's world, sorting our trash correctly is super important for keeping our planet healthy. But, let's be honest,
-it can be pretty confusing sometimes. That's why I'm working on a new website to help everyone out. This site is all
-about making waste sorting simple and clear.
+it can be pretty confusing sometimes. That's why I'm making a new website as my fianl project to help everyone out!.
+This site is all about making waste sorting simple and clear.
 
 Here's the deal: if you're not sure where to throw your trash, just ask our website. We're using some smart AI
 technology to give you quick answers on how to sort your waste. You can ask up to 5 questions every day for free. And if
@@ -18,7 +17,7 @@ you check in on the site daily, you get to ask 10 questions a day!
 I really hope this website will make waste sorting easier for everyone. By getting better at this, we can all do our
 part for the environment and our community.
 
-This project stands as a testament to the cutting-edge skills and knowledge acquired in the ITMD542 course, brilliantly
+This project stands as a testament to the cutting-edge skills and knowledge acquired in the ITMD-542 course, brilliantly
 woven into its fabric. Developed with Express and Node.js, it not only showcases a simple yet profoundly functional
 interface but also embodies the essence of responsive design. By integrating Pug as the template engine and TailwindCSS
 for styling, this web application transcends ordinary user experiences, offering a seamless and captivating interaction
@@ -60,10 +59,14 @@ solutions, illuminating the path for future innovations.
 - **GitHub Authentication**: Utilizes GitHub's OAuth 2.0 authentication system to enable users to authenticate with
   GitHub credentials, providing a secure and streamlined sign-in process.
 
-This technology stack has been curated to support the development of a modern, efficient, and user-friendly web
-application, leveraging the latest advancements in web technology and artificial intelligence.
+In this project, I will integrate several concepts we discussed in the ITMD-542 course to build a complete tech stack
+CRUD (Create, Read, Update, Delete) application. I will apply the latest advancements in web technology and artificial
+intelligence that I have learned so far to develop a modern, efficient, and user-friendly web application.
 
 ## Data Structure
+
+I'm using the mysql specification for ddl here because I'm more familiar with it, but I'm actually using sqllite, and
+writing the code is where I'll do the conversion
 
 ```sql
 create table user
@@ -107,17 +110,74 @@ create table daily_check
 
 ## Function Introduction
 
-![img_1.png](imgs/img_1.png)
+<img src="imgs/img_1.png" alt="img_1.png" style="zoom:50%;" />
 
 ## Waste Sorting core flow chart
 
-![img_2.png](imgs/img_2.png)
+<img src="imgs/img_2.png" alt="img_2.png" style="zoom: 25%;" />
 
 ## Waste Sorting Core Timing Chart
 
-![img.png](imgs/img.png)
+<img src="imgs/img.png" alt="img.png" style="zoom:50%;" />
 
-## 接口文档
+## API Document
+
+### 1. `qa/do` - Garbage Sorting Inquiry
+
+- **Request Type**: GET
+- **Path**: `/do`
+- **Parameters**:
+  - `content` (query): The content of the query. It must be a string and cannot exceed 200 characters in length.
+- **Responses**:
+  - Success: `{code: 0, data: "Answer content", message: "success"}`
+  - Failure:  `{code: 1, message: "Error message"}`
+
+### 2. `qa/check-in` - User Check-in
+
+- **Request Type**: POST
+- **Path**: `/check-in`
+- **Parameters**: None (uses `token` from cookies for authentication)
+- **Responses**:
+  - Success: `{code: 0, message: 'Check-in successful'}`
+  - Failure: `{code: 1, message: 'Error message'}`
+
+### 3. `users/logout` - User Logout
+
+- **Request Type**: POST
+- **Path**: `/logout`
+- **Parameters**: None (clears all cookies)
+- **Responses**:
+  - Success: `{message: "Logout Success", code: 0}`
+
+### 4. `users/delete` - Delete User Account
+
+- **Request Type**: POST
+- **Path**: `/delete`
+- **Parameters**: None (uses `token` from cookies for authentication)
+- **Responses**:
+  - Success: `{message: "User deleted successfully", code: 0}`
+  - Failure: `{message: "Error message", code: 1}`
+
+### 5. `users/edit-username` - Edit Username
+
+- **Request Type**: POST
+- **Path**: `/edit-username`
+- **Parameters**:
+  - `username` (body): New username to be updated.
+- **Responses**:
+  - Success: `{message: "User name updated successfully", code: 0}`
+  - Failure: `{message: "Error message", code: 1}`
+
+### 6. `/callback` - OAuth Callback
+
+- **Request Type**: GET
+- **Path**: `/callback`
+- **Parameters**:
+  - `code` (query): The code received from the OAuth provider to exchange for an access token.
+- **Responses**:
+  - Redirects to `/home` on success with `username` and `token` set in cookies.
+  - Failure: `{message: "Internal Server Error", code: 1}`
+
 
 ## Development Environment
 
@@ -153,7 +213,7 @@ To get this project up and running on your local machine, follow these steps:
    Create a `.env` file in the root directory and populate it with ai config variables. such as `QA_TOKEN=xxxx`(your
    config), This .evn content I will submit to the dashboard
 
-4**Start the application**:
+5. **Start the application**:
 
 - For development:
 
@@ -164,7 +224,7 @@ npm run dev
 - For production:
 
 ```
-npm start
+npm run start
 ```
 
 ## References
