@@ -92,7 +92,7 @@ router.get('/callback', async function (req, res, next) {
         // Find Users by ID
         let user = await userRepository.findOne({uid: userInfo.id});
         if (user) {
-            user.token = token
+            // update the ctime
             await userRepository.save(user);
         } else {
             user = userRepository.create({

@@ -25,7 +25,7 @@ router.get('/do', async function (req, res, next) {
             return
         }
 
-        const uid = user.uid;
+        const uid = user.token;
         const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
         const dailyCheck = await getRepository(DailyCheck).findOne({uid: uid, check_date: today});
         const limit = dailyCheck ? 10 : 5;
@@ -92,7 +92,7 @@ router.post('/check-in', async (req, res) => {
             res.json({code: 1, data: "", message: "Please login again first"});
             return
         }
-        const uid = user.uid;
+        const uid = user.token;
         const today = new Date();
         const checkDate = today.toISOString().slice(0, 10).replace(/-/g, '');
 

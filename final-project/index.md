@@ -2,24 +2,29 @@
 
 ## Online-Visit
 
-First I've deployed to the server，You can access the experience online by clicking [here](http://itmd542-fp-yifan.someget.work/)
+First I've deployed to the server，You can access the experience online by
+clicking [here](http://itmd542-fp-yifan.someget.work/)
 
 ## Project Description
 
-In the current context of environmental protection and sustainable development, waste classification and management have
-become important global issues. However, the dissemination of knowledge and implementation of waste classification face
-several challenges. Many residents are not aware of how to correctly classify waste, which may result in
-ineffective waste sorting.
-To address these issues, I plan to develop a new website. This website will serve residents, who can use the website to
-access waste classification information and improve their waste sorting awareness and skills.
-We believe that through this website, we can enhance the efficiency and accuracy of waste classification, We look
-forward to this project making a contribution to the environmental cause and bringing tangible benefits to our
-community.
+In today's world, sorting our trash correctly is super important for keeping our planet healthy. But, let's be honest,
+it can be pretty confusing sometimes. That's why I'm working on a new website to help everyone out. This site is all
+about making waste sorting simple and clear.
 
-This project is a web application developed using Express and Node.js.
-It showcases a simple yet functional interface, Tailored with a responsive design, it leverages Pug as the template
-engine and TailwindCSS for styling, offering a seamless user experience across different devices.
-over
+Here's the deal: if you're not sure where to throw your trash, just ask our website. We're using some smart AI
+technology to give you quick answers on how to sort your waste. You can ask up to 5 questions every day for free. And if
+you check in on the site daily, you get to ask 10 questions a day!
+
+I really hope this website will make waste sorting easier for everyone. By getting better at this, we can all do our
+part for the environment and our community.
+
+This project stands as a testament to the cutting-edge skills and knowledge acquired in the ITMD542 course, brilliantly
+woven into its fabric. Developed with Express and Node.js, it not only showcases a simple yet profoundly functional
+interface but also embodies the essence of responsive design. By integrating Pug as the template engine and TailwindCSS
+for styling, this web application transcends ordinary user experiences, offering a seamless and captivating interaction
+across various devices. It's a vivid demonstration of how classroom learning can be transformed into real-world
+solutions, illuminating the path for future innovations.
+
 ## Technology Stack
 
 ### Backend
@@ -121,7 +126,7 @@ create table daily_check
 - **Editors Used**: Visual Studio Code
 - **Key Dependencies**:
     - Express for the web server framework
-    - MongoDB and SQLite for database management
+    - SQLite for database management
     - Pug for server-side template rendering
     - TailwindCSS for utility-first CSS styling
 - **Other Tools**:
@@ -145,8 +150,8 @@ To get this project up and running on your local machine, follow these steps:
    npm install
    ```
 4. **Set up environment variables**:
-   Create a `.env` file in the root directory and populate it with ai config variables. `Waste_AI_TOKEN=xxxx`(your
-   config)
+   Create a `.env` file in the root directory and populate it with ai config variables. such as `QA_TOKEN=xxxx`(your
+   config), This .evn content I will submit to the dashboard
 
 4**Start the application**:
 
