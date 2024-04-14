@@ -65,13 +65,14 @@ router.post('/edit-username', async function (req, res, next) {
 
     try {
         const userRepository = getRepository(User);
-        const user = await userRepository.findOne({where: {token: token}});
+        const user = await userRepository.findOne({token: token});
         if (!user) {
             return res.status(404).json({message: "User not found", code: 1});
         }
 
         user.user_name = newUserName;
         await userRepository.save(user);
+        res.cookie('username', newUserName);
         res.json({message: "User name updated successfully", code: 0});
     } catch (error) {
         console.error("Error updating user name:", error);
