@@ -6,6 +6,17 @@ const User = require('../src/entity/User');
 const QARecord = require('../src/entity/QARecord');
 const DailyCheck = require('../src/entity/DailyCheck');
 const qa_token = process.env.QA_TOKEN;
+
+function delCookie(req, res) {
+    if (req.cookies) {
+        // 遍历所有cookie
+        for (const cookie in req.cookies) {
+            // 对每个cookie调用clearCookie来删除
+            res.clearCookie(cookie);
+        }
+    }
+}
+
 router.get('/do', async function (req, res, next) {
     try {
         const content = req.query.content;
@@ -17,11 +28,13 @@ router.get('/do', async function (req, res, next) {
         const token = req.cookies.token;
         if (!token) {
             res.json({code: 0, data: "Please login again first", message: "success"});
+            delCookie(req, res);
             return
         }
         const user = await getRepository(User).findOne({token: token});
         if (!user) {
             res.json({code: 0, data: "Please login again first", message: "success"});
+            delCookie(req, res);
             return
         }
 
@@ -85,11 +98,13 @@ router.post('/check-in', async (req, res) => {
         const token = req.cookies.token;
         if (!token) {
             res.json({code: 1, data: "", message: "Please login again first"});
+            delCookie(req, res);
             return
         }
         const user = await getRepository(User).findOne({token: token});
         if (!user) {
             res.json({code: 1, data: "", message: "Please login again first"});
+            delCookie(req, res);
             return
         }
         const uid = user.token;
