@@ -8,13 +8,15 @@ const DailyCheck = require('../src/entity/DailyCheck');
 const qa_token = process.env.QA_TOKEN;
 
 function delCookie(req, res) {
-    if (req.cookies) {
-        // 遍历所有cookie
-        for (const cookie in req.cookies) {
-            // 对每个cookie调用clearCookie来删除
-            res.clearCookie(cookie);
+    try {
+        if (req.cookies) {
+            // 遍历所有cookie
+            for (const cookie in req.cookies) {
+                // 对每个cookie调用clearCookie来删除
+                res.clearCookie(cookie);
+            }
         }
-    }
+    } catch (ignore) {}
 }
 
 router.get('/do', async function (req, res, next) {
